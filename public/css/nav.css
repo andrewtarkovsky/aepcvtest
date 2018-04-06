@@ -1,0 +1,21 @@
+.aepcvtest-container .navbar {
+    background: #0069d9;
+    width:100%;
+    border-radius: 0px;
+}
+.navbar .navbar__nav {
+    text-align: left;
+    width: 100%;
+}
+.navbar .navbar__nav .navbar__nav__item {
+    list-style-type: none;
+    display: inline-block;
+    font-size: 1.6rem;
+    padding: 0.8rem 2rem 0 0;
+}
+
+.navbar .navbar__nav .navbar__nav__item a,
+.navbar .navbar__nav .navbar__nav__item a:hover {
+    text-decoration: none;
+    color: white;
+}

@@ -15,5 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('post.comment/block/', 'CommentController@block');
+
 Route::resource('post', 'PostController');
 Route::resource('post.comment', 'CommentController');
+
+Route::get('/get-post/', 'PostController@apiGetPost');
+Route::post('/create-post/', 'PostController@apiCreatePost');
+Route::post('/update-post/', 'PostController@apiUpdatePost');
+
+Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/get-comments', 'DashboardController@commentsForPost');

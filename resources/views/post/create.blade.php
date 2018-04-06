@@ -1,3 +1,9 @@
+@extends('layouts.main')
+
+@section('title', 'Jauns ieraksts')
+
+@section('content')
+
 <h1>Jauna ieraksta izveidošana</h1>
 
  {{ method_field('PUT') }}
@@ -12,16 +18,31 @@
 @endif
 
 
-<form action="{{ action('PostController@store') }}" method="post">
+<form action="{{ action('PostController@store') }}" method="post" class="post-form">
     {{ csrf_field() }}
-    <p>
-        <label>Ieraksta virsraksts <input type="text" name="title" value="{{ old('title') }}"></label>
-    </p>
-    <p>
-        <label>Ieraksta teksts
-            <textarea name="text">{{ old('text') }}</textarea>
+    <div class="post-form__row">
+        <label for="post-form__title">Ieraksta virsraksts</label>
+        <input
+                type="text"
+                name="title"
+                value="{{ old('title') }}"
+                class="form-control col-md-6 col-lg-4"
+                id="post-form__title">
+    </div>
+    <div class="post-form__row">
+        <label for="post-form__text">Ieraksta teksts</label>
+        <textarea
+                name="text"
+                class="form-control col-md-6 col-lg-4"
+                id="post-form__text">{{ old('text') }}</textarea>
         </label>
-    </p>
-    <p><input type="submit" value="Izveidot"></p>
+    </div>
+    <div class="post-form__row">
+        <input
+                type="submit"
+                value="Izveidot"
+                class="btn btn-primary comment-form__button-save">
+    </div>
 </form>
-    
+
+@endsection

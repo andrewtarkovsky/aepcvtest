@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Validator;
 use App\Post;
 
 class PostController extends Controller
@@ -37,13 +39,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'text' => 'required',
-        ]);
-        $post = new Post;
-        $post->title = $request->title;
-        $post->text = $request->text;
+        $this->validatePost($request);
+        $post           = new Post;
+        $post->title    = $request->title;
+        $post->text     = $request->text;
         $post->save();
         return redirect()->action('PostController@show', $post);
     }
@@ -81,9 +80,10 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::findOrFail($id);
-        $post->title = $request->title;
-        $post->text = $request->text;
+        $post           = Post::findOrFail($id);
+        $this->validatePost($request);
+        $post->title    = $request->title;
+        $post->text     = $request->text;
         $post->save();
         return redirect()->action('PostController@show', $post);
     }
@@ -96,6 +96,60 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->forceDelete();
+    }
+
+    /**
+     * api - display requested post
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function apiGetPost(Request $request)
+    {
+        $post = Post::findOrFail($request->id);
+
+        return $post;
+    }
+
+    /**
+     * api - create new post
+     * @param Request $request
+     * @return Post
+     */
+    public function apiCreatePost(Request $request) {
+        $this->validatePost($request);
+        $post           = new Post;
+        $post->title    = $request->title;
+        $post->text     = $request->text;
+        $post->save();
+        return $post;
+    }
+
+    /**
+     * api - update post
+     * @param Request $request
+     * @return mixed
+     */
+    public function apiUpdatePost(Request $request) {
+        $this->validatePost($request);
+
+        $post           = Post::findOrFail($request->id);
+        $post->title    = $request->title;
+        $post->text     = $request->text;
+        $post->save();
+        return $post;
+    }
+
+    /**
+     * validation rules for post create/update
+     * @param $request
+     */
+    protected function validatePost($request) {
+        Validator::make($request->toArray(), [
+          'title'   => ['required', Rule::unique('posts')->ignore($request->id)],
+          'text'    => 'required|max:255'
+        ]);
     }
 }

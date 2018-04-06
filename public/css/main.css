@@ -1,0 +1,167 @@
+h1 {
+    padding: 2rem 0rem;
+}
+h2 {
+    padding: 1rem 0rem;
+}
+.content-posts {
+    padding: 2rem 0;
+}
+.posts {
+    list-style-type: none;
+    margin: 0 0 3rem 0;
+}
+.btn-primary {
+    color: white !important;
+}
+.component-container  {
+    display: inline-block;
+}
+.comments {
+    list-style-type: none;
+}
+.comments__item {
+    padding: 0.8rem 0 2rem 0;
+    border-left: 1px solid gray;
+    padding: 0 0 0 1rem;
+}
+.comments__item__label {
+    font-weight: 600;
+}
+.comments__item__value {
+    font-weight: 100;
+}
+.comments__item__label {
+    padding: 1rem 0.2rem;
+}
+.comments__item__button-block {
+    margin: 0 0 0 1rem;
+}
+
+.comment-form {
+    padding: 2rem 0;
+}
+
+.comment-form label {
+    display: block;
+}
+
+.comment-form__button-save {
+    margin: 2rem 0 0 0;
+}
+
+.comment-form__row {
+    float: left;
+    clear: both;
+    width:100%;
+}
+
+.post-form__row {
+    float: left;
+    clear: both;
+    width:100%;
+}
+
+.post-form {
+    padding: 2rem 0;
+}
+
+.post-form label {
+    display: block;
+}
+
+.post-form__button-save {
+    margin: 2rem 0 0 0;
+    color: white;
+}
+
+.statistics {
+    padding: 0;
+}
+
+.statistics .row {
+    padding: 15px;
+}
+
+.statistics__short {
+    border: 1px solid gray;
+    border-radius: 4px;
+    margin: 0.2rem 0 2rem 0rem;
+    padding: 2rem;
+}
+
+.statistics__short h2 {
+    padding: 0rem 0 2rem 0rem;
+}
+
+.statistics__short .statistics__short__row {
+    padding: 2rem 0 0 0;
+}
+
+.statistics__short .statistics__short__row .statistics__short__row__label {
+    font-weight: 600;
+}
+
+.modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-container {
+    width: 300px;
+    margin: 0px auto;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+    transition: all .3s ease;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header h3 {
+    margin-top: 0;
+    color: #42b983;
+}
+
+.modal-body {
+    margin: 20px 0;
+}
+
+.modal-default-button {
+    float: right;
+}
+
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter {
+    opacity: 0;
+}
+
+.modal-leave-active {
+    opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave-active .modal-container {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
